@@ -42,7 +42,7 @@ public class SetupTests
 
                                             namespace AdventOfCode2024.{{day}}.{{part}};
 
-                                            public class Solver : ISolver
+                                            public sealed class Solver : ISolver
                                             {
                                                 public string Solve(string[] input)
                                                 {
@@ -64,7 +64,7 @@ public class SetupTests
 
                                          namespace AdventOfCode2024.Tests.{day}.{part};
 
-                                         public class Tests(ITestOutputHelper testOutputHelper) : SolverTestBase(testOutputHelper);
+                                         public sealed class Tests(ITestOutputHelper testOutputHelper) : SolverTestBase(testOutputHelper);
                                          """);
         }
     }
