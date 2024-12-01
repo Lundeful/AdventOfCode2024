@@ -75,9 +75,7 @@ public class SetupTests
         {
             "testInput.txt",
             "testAnswer.txt",
-            "testOutput.txt",
             "input.txt",
-            "output.txt"
         };
 
         foreach (var file in files)
