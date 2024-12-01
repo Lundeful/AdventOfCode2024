@@ -16,9 +16,6 @@ public sealed class Solver : ISolver
             rightList.Add(int.Parse(parts[^1]));
         }
 
-        leftList.Sort();
-        rightList.Sort();
-
         if (leftList.Count != rightList.Count)
             throw new InvalidOperationException("Side lengths do not match");
 
