@@ -54,9 +54,7 @@ public abstract class SolverTestBase
         var result = _solver.Solve(_testInput);
 
         // Assert
-        File.WriteAllText(Path.Combine(_baseInputPath, "testOutput.txt"), result);
         _testOutputHelper.WriteLine($"{_day} {_part} Test Output: {result}");
-
         result.Should().Be(_testAnswer, "test result should match test answer");
     }
 
@@ -70,9 +68,7 @@ public abstract class SolverTestBase
         var result = _solver.Solve(_input);
 
         // Assert
-        File.WriteAllText(Path.Combine(_baseInputPath, "output.txt"), result);
         _testOutputHelper.WriteLine($"{_day} {_part} Real Output: {result}");
-
         result.Should().NotBeEmpty("real should not be empty");
     }
 }
