@@ -27,8 +27,6 @@ public abstract class SolverTestBase
         _part = namespaceParts[^1];
         _baseInputPath = Path.Combine(_day, _part);
 
-        EnsureDirectoryAndFilesExist();
-
         var solverName = $"AdventOfCode2024.{_day}.{_part}.Solver";
 
         var solutionAssembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == "AdventOfCode2024") ??
@@ -43,28 +41,6 @@ public abstract class SolverTestBase
         _input = File.ReadAllLines(Path.Combine(_baseInputPath, "input.txt"));
         _testInput = File.ReadAllLines(Path.Combine(_baseInputPath, "testInput.txt"));
         _testAnswer = File.ReadAllText(Path.Combine(_baseInputPath, "testAnswer.txt")).Trim();
-    }
-
-    private void EnsureDirectoryAndFilesExist()
-    {
-        Directory.CreateDirectory(_baseInputPath);
-
-        var requiredFiles = new[]
-        {
-            "input.txt",
-            "testInput.txt",
-            "output.txt",
-            "testOutput.txt"
-        };
-
-        foreach (var file in requiredFiles)
-        {
-            var filePath = Path.Combine(_baseInputPath, file);
-            if (!File.Exists(filePath))
-            {
-                File.WriteAllText(filePath, "");
-            }
-        }
     }
 
     [Fact]
@@ -92,7 +68,6 @@ public abstract class SolverTestBase
 
         // Act
         var result = _solver.Solve(_input);
-
 
         // Assert
         File.WriteAllText(Path.Combine(_baseInputPath, "output.txt"), result);
