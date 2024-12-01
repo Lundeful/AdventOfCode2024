@@ -23,7 +23,7 @@ public abstract class SolverTestBase
 
         var namespaceParts = GetType().Namespace!.Split('.');
 
-        _day = namespaceParts[^2];
+        _day = namespaceParts[^2].PadLeft(2, '0');
         _part = namespaceParts[^1];
         _baseInputPath = Path.Combine(_day, _part);
 
@@ -68,7 +68,7 @@ public abstract class SolverTestBase
     }
 
     [Fact]
-    public void Solve_01_Test_Input()
+    public void Solve_01_Test()
     {
         // Arrange
         _testInput.Should().NotBeEmpty($"{_day}.{_part} requires test input");
@@ -85,7 +85,7 @@ public abstract class SolverTestBase
     }
 
     [Fact]
-    public void Solve_02_Real_Input()
+    public void Solve_02_Real()
     {
         // Arrange
         _input.Should().NotBeEmpty($"{_day}.{_part} requires real input");

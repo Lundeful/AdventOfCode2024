@@ -15,7 +15,7 @@ public class SetupTests
         {
             for (var part = 1; part <= partsPerDay; part++)
             {
-                var dayName = $"Day{day}";
+                var dayName = $"Day{day.ToString().PadLeft(2, '0')}";
                 var partName = $"Part{part}";
 
                 // Create solver
