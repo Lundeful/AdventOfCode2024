@@ -15,8 +15,6 @@ public abstract class SolverTestBase
     private readonly string[] _testInput;
     private readonly string _testAnswer;
 
-    private readonly string _baseInputPath;
-
     protected SolverTestBase(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
@@ -25,7 +23,7 @@ public abstract class SolverTestBase
 
         _day = namespaceParts[^2].PadLeft(2, '0');
         _part = namespaceParts[^1];
-        _baseInputPath = Path.Combine(_day, _part);
+        var baseInputPath = Path.Combine(_day, _part);
 
         var solverName = $"AdventOfCode2024.{_day}.{_part}.Solver";
 
@@ -38,9 +36,9 @@ public abstract class SolverTestBase
         _solver = (ISolver)Activator.CreateInstance(solverType)!;
 
         // Load test files
-        _input = File.ReadAllLines(Path.Combine(_baseInputPath, "input.txt"));
-        _testInput = File.ReadAllLines(Path.Combine(_baseInputPath, "testInput.txt"));
-        _testAnswer = File.ReadAllText(Path.Combine(_baseInputPath, "testAnswer.txt")).Trim();
+        _input = File.ReadAllLines(Path.Combine(baseInputPath, "input.txt"));
+        _testInput = File.ReadAllLines(Path.Combine(baseInputPath, "testInput.txt"));
+        _testAnswer = File.ReadAllText(Path.Combine(baseInputPath, "testAnswer.txt")).Trim();
     }
 
     [Fact]
