@@ -11,8 +11,7 @@ public sealed partial class Solver : ISolver
         var regex = MultiplyRegex();
         var multiplications = regex
             .Split(combinedString)
-            .Select(x => regex.Match(x).Value)
-            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .Where(x => regex.IsMatch(x))
             .ToArray();
 
         var sum = 0;
